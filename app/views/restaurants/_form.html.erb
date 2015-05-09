@@ -1,7 +1,8 @@
 <%= form_for(@restaurant, :html => { :multipart => true } ) do |f| %>
   <% if @restaurant.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
+    <div id="error_explanation" class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <h4><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h4>
 
       <ul>
       <% @restaurant.errors.full_messages.each do |message| %>
@@ -10,24 +11,22 @@
       </ul>
     </div>
   <% end %>
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <div class="well">
+
       <div class="form-group field">
         <%= f.label :name %><br>
-        <%= f.text_field :name, class: "form-control" %>
+        <%= f.text_field :name, class: "form-control", placeholder: "Jimmy Johns" %>
       </div>
       <div class="form-group field">
         <%= f.label :address %><br>
-        <%= f.text_field :address, class: "form-control" %>
+        <%= f.text_field :address, class: "form-control", placeholder: "350 Fifth Avenue, New York, NY 55102" %>
       </div>
       <div class="form-group field">
         <%= f.label :phone %><br>
-        <%= f.text_field :phone, class: "form-control" %>
+        <%= f.text_field :phone, class: "form-control", placeholder: "(123) 456-7890" %>
       </div>
       <div class="form-group field">
         <%= f.label :website %><br>
-        <%= f.text_field :website, class: "form-control" %>
+        <%= f.text_field :website, class: "form-control", placeholder: "https://www.jimmyjohns.com" %>
       </div>
       <div class="form-group field">
         <%= f.label :image %><br>
@@ -36,7 +35,6 @@
       <div class="form-group actions">
         <%= f.submit class: "btn btn-danger" %>
       </div>
-    </div>
-  </div>
-</div>
+
+
 <% end %>
